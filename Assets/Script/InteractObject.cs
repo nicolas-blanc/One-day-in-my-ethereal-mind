@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractObject : MonoBehaviour {
 
-	private Collider2D mumu;
 
+	public Text label;
+	public string msg;
 	// Use this for initialization
 	void Start () {
-		mumu = GetComponent<Collider2D>(); 
 	}
 	
 	// Update is called once per frame
@@ -16,7 +17,11 @@ public class InteractObject : MonoBehaviour {
 		
 	}
 	
-	void OnTrigger() {
+
+	public void OnMouseUpAsButton()
+    {
+		label.text = msg;
 		Debug.Log("Mumu");
-	}
+		//label.SetActivate(true);
+    }
 }

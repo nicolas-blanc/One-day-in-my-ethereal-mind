@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     public NoteBook notebook;
     public GUIManager GUIMgr;
-    public Floor floor;
 
     private Rigidbody playerRigidBody;
     private Animator anim;
@@ -87,7 +86,6 @@ public class Player : MonoBehaviour
         GUIMgr.showUI(EnumUI.NoteBook);
         notebook.showPage();
         enabled = false;
-        floor.Desactivate();
     }
 
     public void hideBook()
@@ -95,7 +93,6 @@ public class Player : MonoBehaviour
         notebook.ResetPage();
         GUIMgr.hideUI();
         enabled = true;
-        floor.Activate();
     }
 
     public int getNumberOfPage()
