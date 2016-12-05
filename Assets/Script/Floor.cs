@@ -4,21 +4,26 @@ using System.Collections;
 public class Floor : MonoBehaviour {
 
     public Player player;
+    public GUIManager GUIMgr;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void Activate()
+    {
+        enabled = true;
+    }
+
+    public void Desactivate()
+    {
+        enabled = false;
+    }
 
     void OnMouseUpAsButton()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (enabled)
+        {
+            GUIMgr.hideUI();
 
-        player.GoToPosition(mousePos);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            player.GoToPosition(mousePos);
+        }
     }
 }
