@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float duration;
 
     public NoteBook notebook;
-    private GameObject g_notebook;
+    public GUIManager GUIMgr;
 
     private Rigidbody playerRigidBody;
     private Animator anim;
@@ -45,9 +45,6 @@ public class Player : MonoBehaviour
         book.Add("Test - 13");
         book.Add("Test - 14");
         book.Add("Test - 15");
-
-        g_notebook = GameObject.FindGameObjectWithTag("NoteBook");
-        g_notebook.SetActive(false);
     }
 
     // Update is called once per frame
@@ -86,7 +83,7 @@ public class Player : MonoBehaviour
 
     public void showBook()
     {
-        g_notebook.SetActive(true);
+        GUIMgr.showUI(EnumUI.NoteBook);
         notebook.showPage();
         enabled = false;
     }
@@ -94,7 +91,7 @@ public class Player : MonoBehaviour
     public void hideBook()
     {
         notebook.ResetPage();
-        g_notebook.SetActive(false);
+        GUIMgr.hideUI();
         enabled = true;
     }
 
