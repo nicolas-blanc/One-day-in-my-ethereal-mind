@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class InteractObject : MonoBehaviour {
-
+    public GUIManager GUIMgr;
 
 	public Text label;
 	public string msg;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -20,8 +21,7 @@ public class InteractObject : MonoBehaviour {
 
 	public void OnMouseUpAsButton()
     {
+        GUIMgr.showUI(EnumUI.Object);
 		label.text = msg;
-		Debug.Log("Mumu");
-		//label.SetActivate(true);
     }
 }

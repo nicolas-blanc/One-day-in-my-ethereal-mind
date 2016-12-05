@@ -7,10 +7,15 @@ public class Exit : MonoBehaviour {
     public Player player;
     public GUIManager GUIMgr;
 
+    public bool walkable;
+
     void OnMouseUpAsButton()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        player.GoToPosition(mousePos);
+        if (walkable)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            player.GoToPosition(mousePos);
+        }
 
         GUIMgr.showUI(EnumUI.Exit);
     }
