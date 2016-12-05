@@ -30,14 +30,14 @@ public class Player : MonoBehaviour
 
         book = new ArrayList();
 
-        book.Add("Test - 1");
-        book.Add("Test - 2");
-        book.Add("Test - 3");
-        book.Add("Test - 4");
-        book.Add("Test - 5");
-        book.Add("Test - 6");
-        book.Add("Test - 7");
-        book.Add("Test - 8");
+        book.Add("8h00 - Cours de gestion");
+        book.Add("10h30 - Retrouver Annette au parc");
+        book.Add("12h00 - Mangeeeeeer !! Il y a des frites au menu");
+        book.Add("13h30 - Cours d'anglais, les deux heures les plus longues de ma vie");
+        book.Add("15h30 - Passage a la librairie, je dois rendre le livre");
+        book.Add("16h00 - Rendez-vous chez le doc");
+        book.Add("17h00 - Il faut que je passe a la boutique, Deborah aura surement une trouvaille pour moi");
+        book.Add("21h00 - Ce soir, je vais au theatre");
         book.Add("Test - 9");
         book.Add("Test - 10");
         book.Add("Test - 11");
