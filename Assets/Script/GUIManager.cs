@@ -31,6 +31,7 @@ public class GUIManager : MonoBehaviour {
                 g_notebook.SetActive(true);
                 g_exit.SetActive(false);
                 g_object.SetActive(false);
+                floor.Desactivate();
                 break;
             case EnumUI.Exit:
                 g_notebook.SetActive(false);
@@ -39,6 +40,7 @@ public class GUIManager : MonoBehaviour {
                 floor.Desactivate();
                 break;
             case EnumUI.Object:
+                floor.Activate();
                 g_notebook.SetActive(false);
                 g_exit.SetActive(false);
                 g_object.SetActive(true);
