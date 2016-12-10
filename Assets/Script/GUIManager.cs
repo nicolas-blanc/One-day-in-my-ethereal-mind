@@ -6,7 +6,7 @@ public enum EnumUI { All, NoteBook, Exit, Object };
 
 public class GUIManager : MonoBehaviour {
 
-    public Floor floor;
+    private Floor floor;
 
     private GameObject g_notebook;
     private GameObject g_exit;
@@ -14,9 +14,18 @@ public class GUIManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        g_notebook = GameObject.FindGameObjectWithTag("NoteBook");
-        g_exit = GameObject.FindGameObjectWithTag("Exit");
-        g_object = GameObject.FindGameObjectWithTag("ObjectUI");
+        g_notebook = GameObject.FindWithTag("NoteBook");
+        g_exit = GameObject.FindWithTag("Exit");
+        g_object = GameObject.FindWithTag("ObjectUI");
+
+        if (GameObject.FindWithTag("Floor") == null)
+        {
+            floor = null;
+        }
+        else
+        {
+            floor = GameObject.FindWithTag("Floor").GetComponent<Floor>();
+        }
 
         g_notebook.SetActive(false);
         g_exit.SetActive(false);
@@ -31,16 +40,16 @@ public class GUIManager : MonoBehaviour {
                 g_notebook.SetActive(true);
                 g_exit.SetActive(false);
                 g_object.SetActive(false);
-                floor.Desactivate();
+                if (floor) { floor.Desactivate(); }
                 break;
             case EnumUI.Exit:
                 g_notebook.SetActive(false);
                 g_exit.SetActive(true);
                 g_object.SetActive(false);
-                floor.Desactivate();
+                if (floor) { floor.Desactivate(); }
                 break;
             case EnumUI.Object:
-                floor.Activate();
+                if (floor) { floor.Activate(); }
                 g_notebook.SetActive(false);
                 g_exit.SetActive(false);
                 g_object.SetActive(true);
@@ -53,11 +62,16 @@ public class GUIManager : MonoBehaviour {
         }
     }
 
+    public void showUIExit()
+    {
+        showUI(EnumUI.Exit);
+    }
+
     public void hideUI()
     {
         g_notebook.SetActive(false);
         g_exit.SetActive(false);
         g_object.SetActive(false);
-        floor.Activate();
+        if (floor) { floor.Activate(); }
     }
 }

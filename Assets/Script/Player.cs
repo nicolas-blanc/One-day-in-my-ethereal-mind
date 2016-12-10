@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+public enum TimeDay { Matin = 0, PauseMatin, Midi, PauseAM, ApresMidi, Soir };
+
 public class Player : MonoBehaviour
 {
     public float duration;
@@ -10,41 +12,24 @@ public class Player : MonoBehaviour
     public NoteBook notebook;
     public GUIManager GUIMgr;
 
-    private Rigidbody playerRigidBody;
     private Animator anim;
 
     private bool move;
     private Vector3 nextPos;
-    private Vector3 direction;
 
     private List<Vector2> path;
-
-    private ArrayList book;
 
     // Use this for initialization
     void Start()
     {
-        playerRigidBody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         move = false;
 
-        book = new ArrayList();
-
-        book.Add("8h00 - Cours de gestion");
-        book.Add("10h30 - Retrouver Annette au parc");
-        book.Add("12h00 - Mangeeeeeer !! Il y a des frites au menu");
-        book.Add("13h30 - Cours d'anglais, les deux heures les plus longues de ma vie");
-        book.Add("15h30 - Passage a la librairie, je dois rendre le livre");
-        book.Add("16h00 - Rendez-vous chez le doc");
-        book.Add("17h00 - Il faut que je passe a la boutique, Deborah aura surement une trouvaille pour moi");
-        book.Add("21h00 - Ce soir, je vais au theatre");
-        book.Add("Test - 9");
-        book.Add("Test - 10");
-        book.Add("Test - 11");
-        book.Add("Test - 12");
-        book.Add("Test - 13");
-        book.Add("Test - 14");
-        book.Add("Test - 15");
+        if (!ConstantObject.getInit())
+        {
+            ConstantObject.initilisation();
+            Debug.Log("Initialisation des objets constants");
+        }
     }
 
     // Update is called once per frame
@@ -76,11 +61,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public string getLine(int l)
-    {
-        return (string) book[l];
-    }
-
     public void showBook()
     {
         GUIMgr.showUI(EnumUI.NoteBook);
@@ -95,22 +75,10 @@ public class Player : MonoBehaviour
         enabled = true;
     }
 
-    public int getNumberOfPage()
-    {
-        return (book.Count / 7) + 1; 
-    }
-
-    public int getNumberLine()
-    {
-        return book.Count;
-    }
-
     public void GoToPosition(Vector3 pos)
     {
         nextPos = pos;
         nextPos.z = 0;
-
-        direction = pos;
 
         if(enabled)
             move = true;

@@ -8,17 +8,7 @@ public class InteractObject : MonoBehaviour {
 
 	public Text label;
 	public string msg;
-
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
-
+    
 	public void OnMouseUpAsButton()
     {
         GUIMgr.showUI(EnumUI.Object);

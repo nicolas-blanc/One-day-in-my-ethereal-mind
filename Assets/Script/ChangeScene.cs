@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
+
     /**
      * Permet de changer de scene sur le menu
      * */
-    public void LoadByName(string sceneName)
+    public void LoadByName(int sceneName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
+//         Scene scene = SceneManager.GetSceneByBuildIndex(sceneName);
+//         SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("ConstantObject"), scene);
     }
 
     /**

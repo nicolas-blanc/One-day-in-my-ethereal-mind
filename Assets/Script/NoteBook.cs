@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class NoteBook : MonoBehaviour {
 
-    public Player player;
-
     public Text Date;
 
     public Text page;
@@ -64,7 +62,7 @@ public class NoteBook : MonoBehaviour {
     void setPage()
     {
         int p = (begin / 7) + 1;
-        page.text = p + " / " + player.getNumberOfPage();
+        page.text = p + " / " + ConstantObject.getNumberOfPage();
     }
 
     void resetPage()
@@ -85,11 +83,11 @@ public class NoteBook : MonoBehaviour {
         setDate();
 
         int end = 7;
-        if (((begin / 7) + 1) == player.getNumberOfPage())
-            end = player.getNumberLine() % 7;
+        if (((begin / 7) + 1) == ConstantObject.getNumberOfPage())
+            end = ConstantObject.getNumberLine() % 7;
         for(int i = 0; i < end; i++)
         {
-            SetText(i, player.getLine(i + begin));
+            SetText(i, ConstantObject.getLine(i + begin));
         }
         setPage();
     }
@@ -97,7 +95,7 @@ public class NoteBook : MonoBehaviour {
     public void nextPage()
     {
         begin += 7;
-        if(((begin / 7) + 1) > player.getNumberOfPage())
+        if(((begin / 7) + 1) > ConstantObject.getNumberOfPage())
         {
             begin -= 7;
         }
