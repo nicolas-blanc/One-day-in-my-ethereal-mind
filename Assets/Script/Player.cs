@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public enum TimeDay { Matin = 0, PauseMatin, Midi, PauseAM, ApresMidi, Soir };
-
 public class Player : MonoBehaviour
 {
     public float duration;

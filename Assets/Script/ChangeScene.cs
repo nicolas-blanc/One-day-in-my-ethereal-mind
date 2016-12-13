@@ -4,15 +4,36 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour {
-
     /**
      * Permet de changer de scene sur le menu
      * */
     public void LoadByName(int sceneName)
     {
-        SceneManager.LoadScene(sceneName);
-//         Scene scene = SceneManager.GetSceneByBuildIndex(sceneName);
-//         SceneManager.MoveGameObjectToScene(GameObject.FindWithTag("ConstantObject"), scene);
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex != 1)
+        {
+            ConstantObject.nextTimeDay();
+            if (ConstantObject.getTime() == TimeDay.TimeToSleep)
+            {
+                if (scene.buildIndex == 2)
+                {
+                    SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    SceneManager.LoadScene(2);
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 
     /**

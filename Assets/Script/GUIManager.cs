@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnumUI { All, NoteBook, Exit, Object };
+public enum EnumUI { All, NoteBook, Exit, Object, DeactivateAll };
 
 public class GUIManager : MonoBehaviour {
 
@@ -58,6 +58,12 @@ public class GUIManager : MonoBehaviour {
                 g_notebook.SetActive(true);
                 g_exit.SetActive(true);
                 g_object.SetActive(true);
+                break;
+            case EnumUI.DeactivateAll:
+                g_notebook.SetActive(false);
+                g_exit.SetActive(false);
+                g_object.SetActive(false);
+                if (floor) { floor.Desactivate(); }
                 break;
         }
     }

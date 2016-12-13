@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+
+
+public enum TimeDay { Matin = 0, Matin2, PauseMatin, matin3, Midi, ApresMidi, PauseAM, ApresMidi3, Soiree, Soiree2, Nuit, Nuit2, TimeToSleep };
+
 
 public static class ConstantObject {
 
@@ -17,6 +22,7 @@ public static class ConstantObject {
             timeDay = value;
         }
     }
+
 
     private static ArrayList book;
     private static ArrayList Book
@@ -75,22 +81,43 @@ public static class ConstantObject {
         switch (TimeDay)
         {
             case TimeDay.Matin:
-                tmp = "8h00";
+                tmp = "7h30";
+                break;
+            case TimeDay.Matin2:
+                tmp = "9h00";
                 break;
             case TimeDay.PauseMatin:
                 tmp = "10h00";
                 break;
+            case TimeDay.matin3:
+                tmp = "11h00";
+                break;
             case TimeDay.Midi:
                 tmp = "12h30";
+                break;
+            case TimeDay.ApresMidi:
+                tmp = "14h00";
                 break;
             case TimeDay.PauseAM:
                 tmp = "15h00";
                 break;
-            case TimeDay.ApresMidi:
+            case TimeDay.ApresMidi3:
+                tmp = "16h00";
+                break;
+            case TimeDay.Soiree:
                 tmp = "17h30";
                 break;
-            case TimeDay.Soir:
-                tmp = "20h00";
+            case TimeDay.Soiree2:
+                tmp = "18h30";
+                break;
+            case TimeDay.Nuit:
+                tmp = "20h30";
+                break;
+            case TimeDay.Nuit2:
+                tmp = "21h30";
+                break;
+            case TimeDay.TimeToSleep:
+                tmp = "22h00";
                 break;
             default:
                 tmp = "";
@@ -107,13 +134,13 @@ public static class ConstantObject {
 
     public static void nextTimeDay()
     {
-        if (TimeDay != TimeDay.Soir)
+        if (TimeDay != TimeDay.TimeToSleep)
         {
             TimeDay++;
         }
         else
         {
-            TimeDay = TimeDay.Matin;
+            TimeDay = TimeDay.TimeToSleep;
         }
     }
 }
